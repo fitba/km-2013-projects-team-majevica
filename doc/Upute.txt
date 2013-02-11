@@ -1,0 +1,3 @@
+Korišteni alati:
+- SQL Server 2012 Developer Edition
+- Visual Studio Professional 2012
