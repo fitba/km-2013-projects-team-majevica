@@ -57,7 +57,7 @@ namespace FITkms.Lucene
             {
                 AllArticles = allSampleData,
                 SearchIndexData = _searchResults,
-                Articles = new Articles { ArticleID = 1222, Title = "El-Paso", Content = "City in Texas" },
+                
                 SearchFieldList = search_field_list,
             });
         }
