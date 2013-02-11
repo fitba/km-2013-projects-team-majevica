@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="08e1fcc646e043389441643fdad1a9b3" Name="Diagram1">
+        <EntityTypeShape EntityType="kmsModel.AnswerRatings" Width="1.5" PointX="5.25" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="kmsModel.Answers" Width="1.5" PointX="5.25" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="kmsModel.ArticleCategories" Width="1.5" PointX="6" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="kmsModel.ArticleImages" Width="1.5" PointX="10.5" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="kmsModel.ArticleRatings" Width="1.5" PointX="5.25" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="kmsModel.Articles" Width="1.5" PointX="8.25" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="kmsModel.Questions" Width="1.5" PointX="13.5" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="kmsModel.Roles" Width="1.5" PointX="0.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="kmsModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="kmsModel.Tags" Width="1.5" PointX="10.5" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="kmsModel.Users" Width="1.5" PointX="3" PointY="8.25" IsExpanded="true" />
+        <AssociationConnector Association="kmsModel.FK_AnswerRatings_Answers" ManuallyRouted="false" />
+        <AssociationConnector Association="kmsModel.FK_AnswerRatings_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="kmsModel.FK_Answers_Questions" ManuallyRouted="false" />
+        <AssociationConnector Association="kmsModel.FK_Answers_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="kmsModel.FK_Articles_ArticleCategories" ManuallyRouted="false" />
+        <AssociationConnector Association="kmsModel.FK_ArticleImages_Articles" ManuallyRouted="false" />
+        <AssociationConnector Association="kmsModel.FK_ArticleRatings_Articles" ManuallyRouted="false" />
+        <AssociationConnector Association="kmsModel.FK_ArticleRatings_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="kmsModel.FK_Articles_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="kmsModel.FK_Questions_Articles" ManuallyRouted="false" />
+        <AssociationConnector Association="kmsModel.FK_Questions_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="kmsModel.ArticleTags" ManuallyRouted="false" />
+        <AssociationConnector Association="kmsModel.UserRoles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,13 @@
+﻿@model IEnumerable<FITkms.Models.Tags>
+
+
+
+<li class="nav-header">Tag cloud</li>
+@foreach (var item in Model)
+{
+    @*<span class="label">@Html.DisplayFor(modelitem => item.Name)</span>*@    
+    
+    @Html.ActionLink(item.Name, "articlesbytags", new { id = item.TagID }, new {@class="label" })<text>&#032</text>
+}
+
+ 

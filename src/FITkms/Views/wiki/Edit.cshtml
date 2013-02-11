@@ -1,0 +1,55 @@
+﻿@model FITkms.Models.Articles
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/shared/_BootstrapLayout.basic.cshtml";
+}
+
+<script src="~/Content/ckeditor/ckeditor.js" type="text/javascript"></script>
+
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>@Html.EditorFor(model => model.Title)</legend>
+
+         @Html.HiddenFor(model => model.ArticleID)
+
+        <div class="editor-field">
+
+            @Html.DropDownList("ArticleCategoryID", "Select article category")
+
+        </div>
+
+        <div class="editor-field">
+            @*@Html.TextAreaFor(model => model.Content, new {style = "width: 810px; height: 200px" })*@
+            @Html.TextAreaFor(model => model.Content, new { @class = "ckeditor", @id = "editor1" })
+            @Html.ValidationMessageFor(model => model.Content)
+        </div>
+
+        <br />
+        <div class="btn-group">
+        <button class="btn" type="submit" value="Save">Save</button>
+    </div>
+        
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+<script type="text/javascript">
+    $('.textarea').wysihtml5();
+    </script>
+
+
+@section Scripts {
+    @*@System.Web.Optimization.Scripts.Render("~/bundles/jqueryval")*@
+    @System.Web.Optimization.Styles.Render("~/BootstrapBundleConfig/~js");
+    
+}

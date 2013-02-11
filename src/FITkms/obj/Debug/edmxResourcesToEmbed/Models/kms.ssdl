@@ -1,0 +1,414 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="kmsModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="kmsModelStoreContainer">
+    <EntitySet Name="AnswerRatings" EntityType="kmsModel.Store.AnswerRatings" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Answers" EntityType="kmsModel.Store.Answers" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ArticleCategories" EntityType="kmsModel.Store.ArticleCategories" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ArticleImages" EntityType="kmsModel.Store.ArticleImages" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ArticleRatings" EntityType="kmsModel.Store.ArticleRatings" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Articles" EntityType="kmsModel.Store.Articles" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ArticleTags" EntityType="kmsModel.Store.ArticleTags" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Questions" EntityType="kmsModel.Store.Questions" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Roles" EntityType="kmsModel.Store.Roles" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="sysdiagrams" EntityType="kmsModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Tags" EntityType="kmsModel.Store.Tags" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserRoles" EntityType="kmsModel.Store.UserRoles" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Users" EntityType="kmsModel.Store.Users" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_AnswerRatings_Answers" Association="kmsModel.Store.FK_AnswerRatings_Answers">
+      <End Role="Answers" EntitySet="Answers" />
+      <End Role="AnswerRatings" EntitySet="AnswerRatings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AnswerRatings_Users" Association="kmsModel.Store.FK_AnswerRatings_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="AnswerRatings" EntitySet="AnswerRatings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Answers_Questions" Association="kmsModel.Store.FK_Answers_Questions">
+      <End Role="Questions" EntitySet="Questions" />
+      <End Role="Answers" EntitySet="Answers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Answers_Users" Association="kmsModel.Store.FK_Answers_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Answers" EntitySet="Answers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ArticleImages_Articles" Association="kmsModel.Store.FK_ArticleImages_Articles">
+      <End Role="Articles" EntitySet="Articles" />
+      <End Role="ArticleImages" EntitySet="ArticleImages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ArticleRatings_Articles" Association="kmsModel.Store.FK_ArticleRatings_Articles">
+      <End Role="Articles" EntitySet="Articles" />
+      <End Role="ArticleRatings" EntitySet="ArticleRatings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ArticleRatings_Users" Association="kmsModel.Store.FK_ArticleRatings_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="ArticleRatings" EntitySet="ArticleRatings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Articles_ArticleCategories" Association="kmsModel.Store.FK_Articles_ArticleCategories">
+      <End Role="ArticleCategories" EntitySet="ArticleCategories" />
+      <End Role="Articles" EntitySet="Articles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Articles_Users" Association="kmsModel.Store.FK_Articles_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Articles" EntitySet="Articles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ArticleTags_Articles" Association="kmsModel.Store.FK_ArticleTags_Articles">
+      <End Role="Articles" EntitySet="Articles" />
+      <End Role="ArticleTags" EntitySet="ArticleTags" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ArticleTags_Tags" Association="kmsModel.Store.FK_ArticleTags_Tags">
+      <End Role="Tags" EntitySet="Tags" />
+      <End Role="ArticleTags" EntitySet="ArticleTags" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Questions_Articles" Association="kmsModel.Store.FK_Questions_Articles">
+      <End Role="Articles" EntitySet="Articles" />
+      <End Role="Questions" EntitySet="Questions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Questions_Users" Association="kmsModel.Store.FK_Questions_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Questions" EntitySet="Questions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserRoles_Roles" Association="kmsModel.Store.FK_UserRoles_Roles">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="UserRoles" EntitySet="UserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserRoles_Users" Association="kmsModel.Store.FK_UserRoles_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="UserRoles" EntitySet="UserRoles" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="AnswerRatings">
+    <Key>
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="AnswerID" />
+    </Key>
+    <Property Name="UserID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="AnswerID" Type="int" Nullable="false" />
+    <Property Name="RatingPoints" Type="int" />
+  </EntityType>
+  <EntityType Name="Answers">
+    <Key>
+      <PropertyRef Name="AnswerID" />
+    </Key>
+    <Property Name="AnswerID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="QuestionID" Type="int" />
+    <Property Name="Answer" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="ArticleCategories">
+    <Key>
+      <PropertyRef Name="ArticleCategoryID" />
+    </Key>
+    <Property Name="ArticleCategoryID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="Description" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="ArticleImages">
+    <Key>
+      <PropertyRef Name="ArticleImageID" />
+    </Key>
+    <Property Name="ArticleImageID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ArticleID" Type="int" />
+    <Property Name="Name" Type="nvarchar" MaxLength="150" />
+    <Property Name="Location" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="ArticleRatings">
+    <Key>
+      <PropertyRef Name="ArticleID" />
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="ArticleID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="RatingPoints" Type="int" />
+  </EntityType>
+  <EntityType Name="Articles">
+    <Key>
+      <PropertyRef Name="ArticleID" />
+    </Key>
+    <Property Name="ArticleID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="UserIPAddress" Type="nvarchar" MaxLength="255" />
+    <Property Name="ArticleCategoryID" Type="int" />
+    <Property Name="Title" Type="nvarchar" MaxLength="255" />
+    <Property Name="Content" Type="nvarchar(max)" />
+    <Property Name="DateCreated" Type="datetime" />
+    <Property Name="DateModified" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ArticleTags">
+    <Key>
+      <PropertyRef Name="ArticleID" />
+      <PropertyRef Name="TagID" />
+    </Key>
+    <Property Name="ArticleID" Type="int" Nullable="false" />
+    <Property Name="TagID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Questions">
+    <Key>
+      <PropertyRef Name="QuestionID" />
+    </Key>
+    <Property Name="QuestionID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="ArticleID" Type="int" />
+    <Property Name="Title" Type="nvarchar" MaxLength="250" />
+    <Property Name="Question" Type="nvarchar(max)" />
+    <Property Name="DateCreated" Type="datetime" />
+    <Property Name="DateModified" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="RoleID" />
+    </Key>
+    <Property Name="RoleID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Tags">
+    <Key>
+      <PropertyRef Name="TagID" />
+    </Key>
+    <Property Name="TagID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="UserRoles">
+    <Key>
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="RoleID" />
+    </Key>
+    <Property Name="UserID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="RoleID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="nvarchar" MaxLength="50" />
+    <Property Name="Password" Type="nvarchar" MaxLength="100" />
+    <Property Name="Firstname" Type="nvarchar" MaxLength="100" />
+    <Property Name="Lastname" Type="nvarchar" MaxLength="100" />
+    <Property Name="Age" Type="int" />
+    <Property Name="Email" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <Association Name="FK_AnswerRatings_Answers">
+    <End Role="Answers" Type="kmsModel.Store.Answers" Multiplicity="1" />
+    <End Role="AnswerRatings" Type="kmsModel.Store.AnswerRatings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Answers">
+        <PropertyRef Name="AnswerID" />
+      </Principal>
+      <Dependent Role="AnswerRatings">
+        <PropertyRef Name="AnswerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AnswerRatings_Users">
+    <End Role="Users" Type="kmsModel.Store.Users" Multiplicity="1" />
+    <End Role="AnswerRatings" Type="kmsModel.Store.AnswerRatings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="AnswerRatings">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Answers_Questions">
+    <End Role="Questions" Type="kmsModel.Store.Questions" Multiplicity="0..1" />
+    <End Role="Answers" Type="kmsModel.Store.Answers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Questions">
+        <PropertyRef Name="QuestionID" />
+      </Principal>
+      <Dependent Role="Answers">
+        <PropertyRef Name="QuestionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Answers_Users">
+    <End Role="Users" Type="kmsModel.Store.Users" Multiplicity="0..1" />
+    <End Role="Answers" Type="kmsModel.Store.Answers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Answers">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ArticleImages_Articles">
+    <End Role="Articles" Type="kmsModel.Store.Articles" Multiplicity="0..1" />
+    <End Role="ArticleImages" Type="kmsModel.Store.ArticleImages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Articles">
+        <PropertyRef Name="ArticleID" />
+      </Principal>
+      <Dependent Role="ArticleImages">
+        <PropertyRef Name="ArticleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ArticleRatings_Articles">
+    <End Role="Articles" Type="kmsModel.Store.Articles" Multiplicity="1" />
+    <End Role="ArticleRatings" Type="kmsModel.Store.ArticleRatings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Articles">
+        <PropertyRef Name="ArticleID" />
+      </Principal>
+      <Dependent Role="ArticleRatings">
+        <PropertyRef Name="ArticleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ArticleRatings_Users">
+    <End Role="Users" Type="kmsModel.Store.Users" Multiplicity="1" />
+    <End Role="ArticleRatings" Type="kmsModel.Store.ArticleRatings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="ArticleRatings">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Articles_ArticleCategories">
+    <End Role="ArticleCategories" Type="kmsModel.Store.ArticleCategories" Multiplicity="0..1" />
+    <End Role="Articles" Type="kmsModel.Store.Articles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ArticleCategories">
+        <PropertyRef Name="ArticleCategoryID" />
+      </Principal>
+      <Dependent Role="Articles">
+        <PropertyRef Name="ArticleCategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Articles_Users">
+    <End Role="Users" Type="kmsModel.Store.Users" Multiplicity="0..1" />
+    <End Role="Articles" Type="kmsModel.Store.Articles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Articles">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ArticleTags_Articles">
+    <End Role="Articles" Type="kmsModel.Store.Articles" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ArticleTags" Type="kmsModel.Store.ArticleTags" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Articles">
+        <PropertyRef Name="ArticleID" />
+      </Principal>
+      <Dependent Role="ArticleTags">
+        <PropertyRef Name="ArticleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ArticleTags_Tags">
+    <End Role="Tags" Type="kmsModel.Store.Tags" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ArticleTags" Type="kmsModel.Store.ArticleTags" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tags">
+        <PropertyRef Name="TagID" />
+      </Principal>
+      <Dependent Role="ArticleTags">
+        <PropertyRef Name="TagID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Questions_Articles">
+    <End Role="Articles" Type="kmsModel.Store.Articles" Multiplicity="0..1" />
+    <End Role="Questions" Type="kmsModel.Store.Questions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Articles">
+        <PropertyRef Name="ArticleID" />
+      </Principal>
+      <Dependent Role="Questions">
+        <PropertyRef Name="ArticleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Questions_Users">
+    <End Role="Users" Type="kmsModel.Store.Users" Multiplicity="0..1" />
+    <End Role="Questions" Type="kmsModel.Store.Questions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Questions">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserRoles_Roles">
+    <End Role="Roles" Type="kmsModel.Store.Roles" Multiplicity="1" />
+    <End Role="UserRoles" Type="kmsModel.Store.UserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="RoleID" />
+      </Principal>
+      <Dependent Role="UserRoles">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserRoles_Users">
+    <End Role="Users" Type="kmsModel.Store.Users" Multiplicity="1" />
+    <End Role="UserRoles" Type="kmsModel.Store.UserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="UserRoles">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+</Schema>

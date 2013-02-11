@@ -1,0 +1,85 @@
+@using System.Web.Optimization
+@using BootstrapSupport
+@using NavigationRoutes
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>@ViewBag.Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="@Styles.Url("~/content/css")" rel="stylesheet"/>
+    @RenderSection("head", required: false)
+    @Html.Partial("_html5shiv")
+    @* favicons and touch icons go here *@
+
+    @*<link href="~/Content/bootstrap.min.css" rel="stylesheet" />*@
+    
+    @{       
+        //LAN IP address
+        //Get the Host Name
+        string stringHostName = Dns.GetHostName();
+        //Get The Ip Host Entry
+        IPHostEntry ipHostEntries = Dns.GetHostEntry(stringHostName);
+        //Get The Ip Address From The Ip Host Entry Address List
+        IPAddress[] arrIpAddress = ipHostEntries.AddressList;
+        string ip = arrIpAddress[arrIpAddress.Length - 1].ToString();      
+     }
+
+</head>
+<body>
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <a class="brand" href="/wiki" title="change in _bootstrapLayout.basic.cshtml">
+                    KMS_<small>team Majevitza</"code></small> </a>
+                <div class="nav-collapse collapse">
+                    <ul class="nav">
+                        @Html.Navigation() 
+                    </ul>
+                </div>
+               
+                <form class="navbar-search pull-right">
+                    <input type="text" class="search-query" placeholder="Search" >
+              
+                    <small>Local user: @ip</small>
+                </form>
+                
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="container">
+        <div class="row">
+            <div class="span2">
+               @{Html.RenderAction("CategoriesMenu", "wiki");}
+                <br />
+               @{Html.RenderAction("AllTagsPartial", "wiki");}
+            </div>
+
+            <div class="span10">
+                @Html.Partial("_alerts")
+                @Html.Partial("_validationSummary")
+                @RenderBody()
+            </div>
+            
+            
+        </div>
+
+        <hr>
+        <footer>
+            <p style="text-align:center">Designed and built with all the love in the world by <a href="mailto:tarik.dedic@edu.fit.ba">Tarik</a>, <a href="#" @*target="_blank"*@>Dzenan</a> and <a href="#" >Anes</a>.</p>
+        </footer>
+    </div>
+    @Scripts.Render("~/js")
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
+

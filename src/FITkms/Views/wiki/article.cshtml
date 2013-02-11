@@ -1,0 +1,41 @@
+﻿@model FITkms.Models.Articles
+@{
+    ViewBag.Title = Model.Title;
+}
+
+
+
+<fieldset>
+    <legend>@Html.DisplayFor(model => model.Title)</legend>
+
+
+
+    <p>@Html.Raw(Model.Content)</p>
+
+    Category: <span class="label label-info"">@ViewBag.artcat</span>
+    <br />
+    Tags: 
+        @foreach (var item in ViewBag.data)
+        {
+            <span class="label">@item.Name</span>
+        }
+    
+    <br />
+    <br />
+
+</fieldset>
+
+<div class="btn-group">
+
+    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">Action<span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+        <li>@Html.ActionLink("Edit", "Edit", new { id = Model.ArticleID })</li>
+        @*<li class="divider"></li>*@
+        <li>@Html.ActionLink("Back to home", "Index")</li>
+        <li class="divider"></li>
+        <li>@Html.ActionLink("Delete", "Delete", new { id = Model.ArticleID })</li>
+    </ul>
+</div>
+
+

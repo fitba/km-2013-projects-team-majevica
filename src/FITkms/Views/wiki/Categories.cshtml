@@ -1,0 +1,74 @@
+﻿@model IEnumerable<FITkms.Models.ArticleCategories>
+
+@{
+    ViewBag.Title = "Categories";
+    Layout = "~/Views/shared/_BootstrapLayout.basic.cshtml";
+}
+
+
+<h2>Categories</h2>
+
+<div class="btn-group">
+    <p>@Html.ActionLink("Create New", "Create", null, new { @class = "btn" }) </p>
+</div>
+
+
+@*<table>
+    <tr>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+    }*@
+
+
+
+<ul class="thumbnails">
+    @foreach (var item in Model)
+    {
+         
+        <li class="span4">
+            <a href="#" class="thumbnail">
+                <img src="~/Content/images/imagesample.jpg" alt="Sport image">
+            </a>
+            <div class="caption">
+                <h3>@Html.DisplayFor(modelItem => item.Name)</h3>
+                <p>@Html.DisplayFor(modelItem => item.Description)</p>
+                <p>
+                    @Html.ActionLink("View articles", "ArticlesByCategories", new { id = item.ArticleCategoryID }, new {@class= "btn btn-primary" })
+                    
+                </p>
+            </div>
+
+        </li>
+        
+    
+    }
+</ul>
+
+
+
+
+@*</table>*@

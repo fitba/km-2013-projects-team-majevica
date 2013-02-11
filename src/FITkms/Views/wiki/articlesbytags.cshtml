@@ -1,0 +1,22 @@
+﻿@model IEnumerable<FITkms.Models.Articles>
+
+@{
+    ViewBag.Title = @ViewBag.tagName;
+    Layout = "~/Views/shared/_BootstrapLayout.basic.cshtml";
+}
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+
+<blockquote>
+<h3 class="text-info"><strong>@ViewBag.tagName</strong></h3>
+</blockquote>
+
+<ul>
+@foreach (var item in Model)
+{
+       
+           <li> @Html.ActionLink(item.Title, "article", new { id = item.ArticleID })</li>
+                @*<a href='@Url.Action(item.Title, "article", new {id = item.ArticleID })'></a>*@
+       
+       
+}</ul>

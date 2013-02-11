@@ -1,0 +1,19 @@
+﻿@using System.Web.Optimization
+@model FITkms.Models.Articles
+
+@{
+    ViewBag.Title = "FIT::KMS";
+    Layout = "~/Views/shared/_BootstrapLayout.basic.cshtml";
+}
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+<div class="hero-unit">
+
+    <h2>Welcome!</h2>
+    <p>This is our Knowledge Management project. It includes wiki, q&a, and recommendation
+        system.</p>
+    <p><a class="btn btn-primary btn-large">More about us &raquo;</a></p>
+</div>
+
+@{Html.RenderAction("IndexPartial", "wiki");}

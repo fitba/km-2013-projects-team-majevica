@@ -1,0 +1,52 @@
+﻿@model IEnumerable<FITkms.Models.ArticleCategories>
+
+
+@*<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ArticleCategoryID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ArticleCategoryID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>*@
+
+<ul class="nav nav-list">
+    <li class="nav-header">Categories</li>
+    @foreach (var item in Model)
+    {
+    <li>@Html.ActionLink(item.Name, "articlesbycategories", "wiki", new {id = item.ArticleCategoryID}, null)</li>       
+    }
+</ul>
+
+
+
+
+
+    
+

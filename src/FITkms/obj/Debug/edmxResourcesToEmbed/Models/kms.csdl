@@ -1,0 +1,380 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="kmsModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="kmsEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="AnswerRatings" EntityType="kmsModel.AnswerRatings" />
+    <EntitySet Name="Answers" EntityType="kmsModel.Answers" />
+    <EntitySet Name="ArticleCategories" EntityType="kmsModel.ArticleCategories" />
+    <EntitySet Name="ArticleImages" EntityType="kmsModel.ArticleImages" />
+    <EntitySet Name="ArticleRatings" EntityType="kmsModel.ArticleRatings" />
+    <EntitySet Name="Articles" EntityType="kmsModel.Articles" />
+    <EntitySet Name="Questions" EntityType="kmsModel.Questions" />
+    <EntitySet Name="Roles" EntityType="kmsModel.Roles" />
+    <EntitySet Name="sysdiagrams" EntityType="kmsModel.sysdiagrams" />
+    <EntitySet Name="Tags" EntityType="kmsModel.Tags" />
+    <EntitySet Name="Users" EntityType="kmsModel.Users" />
+    <AssociationSet Name="FK_AnswerRatings_Answers" Association="kmsModel.FK_AnswerRatings_Answers">
+      <End Role="Answers" EntitySet="Answers" />
+      <End Role="AnswerRatings" EntitySet="AnswerRatings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AnswerRatings_Users" Association="kmsModel.FK_AnswerRatings_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="AnswerRatings" EntitySet="AnswerRatings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Answers_Questions" Association="kmsModel.FK_Answers_Questions">
+      <End Role="Questions" EntitySet="Questions" />
+      <End Role="Answers" EntitySet="Answers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Answers_Users" Association="kmsModel.FK_Answers_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Answers" EntitySet="Answers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Articles_ArticleCategories" Association="kmsModel.FK_Articles_ArticleCategories">
+      <End Role="ArticleCategories" EntitySet="ArticleCategories" />
+      <End Role="Articles" EntitySet="Articles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ArticleImages_Articles" Association="kmsModel.FK_ArticleImages_Articles">
+      <End Role="Articles" EntitySet="Articles" />
+      <End Role="ArticleImages" EntitySet="ArticleImages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ArticleRatings_Articles" Association="kmsModel.FK_ArticleRatings_Articles">
+      <End Role="Articles" EntitySet="Articles" />
+      <End Role="ArticleRatings" EntitySet="ArticleRatings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ArticleRatings_Users" Association="kmsModel.FK_ArticleRatings_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="ArticleRatings" EntitySet="ArticleRatings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Articles_Users" Association="kmsModel.FK_Articles_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Articles" EntitySet="Articles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Questions_Articles" Association="kmsModel.FK_Questions_Articles">
+      <End Role="Articles" EntitySet="Articles" />
+      <End Role="Questions" EntitySet="Questions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Questions_Users" Association="kmsModel.FK_Questions_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Questions" EntitySet="Questions" />
+    </AssociationSet>
+    <AssociationSet Name="ArticleTags" Association="kmsModel.ArticleTags">
+      <End Role="Articles" EntitySet="Articles" />
+      <End Role="Tags" EntitySet="Tags" />
+    </AssociationSet>
+    <AssociationSet Name="UserRoles" Association="kmsModel.UserRoles">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(kmsModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(kmsModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+  </EntityContainer>
+  <EntityType Name="AnswerRatings">
+    <Key>
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="AnswerID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="AnswerID" Type="Int32" Nullable="false" />
+    <Property Name="RatingPoints" Type="Int32" />
+    <NavigationProperty Name="Answers" Relationship="kmsModel.FK_AnswerRatings_Answers" FromRole="AnswerRatings" ToRole="Answers" />
+    <NavigationProperty Name="Users" Relationship="kmsModel.FK_AnswerRatings_Users" FromRole="AnswerRatings" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Answers">
+    <Key>
+      <PropertyRef Name="AnswerID" />
+    </Key>
+    <Property Name="AnswerID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int32" />
+    <Property Name="QuestionID" Type="Int32" />
+    <Property Name="Answer" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="AnswerRatings" Relationship="kmsModel.FK_AnswerRatings_Answers" FromRole="Answers" ToRole="AnswerRatings" />
+    <NavigationProperty Name="Questions" Relationship="kmsModel.FK_Answers_Questions" FromRole="Answers" ToRole="Questions" />
+    <NavigationProperty Name="Users" Relationship="kmsModel.FK_Answers_Users" FromRole="Answers" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="ArticleCategories">
+    <Key>
+      <PropertyRef Name="ArticleCategoryID" />
+    </Key>
+    <Property Name="ArticleCategoryID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="Description" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Articles" Relationship="kmsModel.FK_Articles_ArticleCategories" FromRole="ArticleCategories" ToRole="Articles" />
+  </EntityType>
+  <EntityType Name="ArticleImages">
+    <Key>
+      <PropertyRef Name="ArticleImageID" />
+    </Key>
+    <Property Name="ArticleImageID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="ArticleID" Type="Int32" />
+    <Property Name="Name" Type="String" MaxLength="150" Unicode="true" FixedLength="false" />
+    <Property Name="Location" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Articles" Relationship="kmsModel.FK_ArticleImages_Articles" FromRole="ArticleImages" ToRole="Articles" />
+  </EntityType>
+  <EntityType Name="ArticleRatings">
+    <Key>
+      <PropertyRef Name="ArticleID" />
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="ArticleID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="RatingPoints" Type="Int32" />
+    <NavigationProperty Name="Articles" Relationship="kmsModel.FK_ArticleRatings_Articles" FromRole="ArticleRatings" ToRole="Articles" />
+    <NavigationProperty Name="Users" Relationship="kmsModel.FK_ArticleRatings_Users" FromRole="ArticleRatings" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Articles">
+    <Key>
+      <PropertyRef Name="ArticleID" />
+    </Key>
+    <Property Name="ArticleID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int32" />
+    <Property Name="ArticleCategoryID" Type="Int32" />
+    <Property Name="Title" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="Content" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="DateCreated" Type="DateTime" Precision="3" />
+    <Property Name="DateModified" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="ArticleCategories" Relationship="kmsModel.FK_Articles_ArticleCategories" FromRole="Articles" ToRole="ArticleCategories" />
+    <NavigationProperty Name="ArticleImages" Relationship="kmsModel.FK_ArticleImages_Articles" FromRole="Articles" ToRole="ArticleImages" />
+    <NavigationProperty Name="ArticleRatings" Relationship="kmsModel.FK_ArticleRatings_Articles" FromRole="Articles" ToRole="ArticleRatings" />
+    <NavigationProperty Name="Users" Relationship="kmsModel.FK_Articles_Users" FromRole="Articles" ToRole="Users" />
+    <NavigationProperty Name="Questions" Relationship="kmsModel.FK_Questions_Articles" FromRole="Articles" ToRole="Questions" />
+    <NavigationProperty Name="Tags" Relationship="kmsModel.ArticleTags" FromRole="Articles" ToRole="Tags" />
+    <Property Type="String" Name="UserIPAddress" MaxLength="255" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Questions">
+    <Key>
+      <PropertyRef Name="QuestionID" />
+    </Key>
+    <Property Name="QuestionID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int32" />
+    <Property Name="ArticleID" Type="Int32" />
+    <Property Name="Title" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+    <Property Name="Question" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="DateCreated" Type="DateTime" Precision="3" />
+    <Property Name="DateModified" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Answers" Relationship="kmsModel.FK_Answers_Questions" FromRole="Questions" ToRole="Answers" />
+    <NavigationProperty Name="Articles" Relationship="kmsModel.FK_Questions_Articles" FromRole="Questions" ToRole="Articles" />
+    <NavigationProperty Name="Users" Relationship="kmsModel.FK_Questions_Users" FromRole="Questions" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="RoleID" />
+    </Key>
+    <Property Name="RoleID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Users" Relationship="kmsModel.UserRoles" FromRole="Roles" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Tags">
+    <Key>
+      <PropertyRef Name="TagID" />
+    </Key>
+    <Property Name="TagID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Articles" Relationship="kmsModel.ArticleTags" FromRole="Tags" ToRole="Articles" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Password" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="Firstname" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="Lastname" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="Age" Type="Int32" />
+    <Property Name="Email" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="AnswerRatings" Relationship="kmsModel.FK_AnswerRatings_Users" FromRole="Users" ToRole="AnswerRatings" />
+    <NavigationProperty Name="Answers" Relationship="kmsModel.FK_Answers_Users" FromRole="Users" ToRole="Answers" />
+    <NavigationProperty Name="ArticleRatings" Relationship="kmsModel.FK_ArticleRatings_Users" FromRole="Users" ToRole="ArticleRatings" />
+    <NavigationProperty Name="Articles" Relationship="kmsModel.FK_Articles_Users" FromRole="Users" ToRole="Articles" />
+    <NavigationProperty Name="Questions" Relationship="kmsModel.FK_Questions_Users" FromRole="Users" ToRole="Questions" />
+    <NavigationProperty Name="Roles" Relationship="kmsModel.UserRoles" FromRole="Users" ToRole="Roles" />
+  </EntityType>
+  <Association Name="FK_AnswerRatings_Answers">
+    <End Role="Answers" Type="kmsModel.Answers" Multiplicity="1" />
+    <End Role="AnswerRatings" Type="kmsModel.AnswerRatings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Answers">
+        <PropertyRef Name="AnswerID" />
+      </Principal>
+      <Dependent Role="AnswerRatings">
+        <PropertyRef Name="AnswerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AnswerRatings_Users">
+    <End Role="Users" Type="kmsModel.Users" Multiplicity="1" />
+    <End Role="AnswerRatings" Type="kmsModel.AnswerRatings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="AnswerRatings">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Answers_Questions">
+    <End Role="Questions" Type="kmsModel.Questions" Multiplicity="0..1" />
+    <End Role="Answers" Type="kmsModel.Answers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Questions">
+        <PropertyRef Name="QuestionID" />
+      </Principal>
+      <Dependent Role="Answers">
+        <PropertyRef Name="QuestionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Answers_Users">
+    <End Role="Users" Type="kmsModel.Users" Multiplicity="0..1" />
+    <End Role="Answers" Type="kmsModel.Answers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Answers">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Articles_ArticleCategories">
+    <End Role="ArticleCategories" Type="kmsModel.ArticleCategories" Multiplicity="0..1" />
+    <End Role="Articles" Type="kmsModel.Articles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ArticleCategories">
+        <PropertyRef Name="ArticleCategoryID" />
+      </Principal>
+      <Dependent Role="Articles">
+        <PropertyRef Name="ArticleCategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ArticleImages_Articles">
+    <End Role="Articles" Type="kmsModel.Articles" Multiplicity="0..1" />
+    <End Role="ArticleImages" Type="kmsModel.ArticleImages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Articles">
+        <PropertyRef Name="ArticleID" />
+      </Principal>
+      <Dependent Role="ArticleImages">
+        <PropertyRef Name="ArticleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ArticleRatings_Articles">
+    <End Role="Articles" Type="kmsModel.Articles" Multiplicity="1" />
+    <End Role="ArticleRatings" Type="kmsModel.ArticleRatings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Articles">
+        <PropertyRef Name="ArticleID" />
+      </Principal>
+      <Dependent Role="ArticleRatings">
+        <PropertyRef Name="ArticleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ArticleRatings_Users">
+    <End Role="Users" Type="kmsModel.Users" Multiplicity="1" />
+    <End Role="ArticleRatings" Type="kmsModel.ArticleRatings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="ArticleRatings">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Articles_Users">
+    <End Role="Users" Type="kmsModel.Users" Multiplicity="0..1" />
+    <End Role="Articles" Type="kmsModel.Articles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Articles">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Questions_Articles">
+    <End Role="Articles" Type="kmsModel.Articles" Multiplicity="0..1" />
+    <End Role="Questions" Type="kmsModel.Questions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Articles">
+        <PropertyRef Name="ArticleID" />
+      </Principal>
+      <Dependent Role="Questions">
+        <PropertyRef Name="ArticleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Questions_Users">
+    <End Role="Users" Type="kmsModel.Users" Multiplicity="0..1" />
+    <End Role="Questions" Type="kmsModel.Questions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Questions">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ArticleTags">
+    <End Role="Articles" Type="kmsModel.Articles" Multiplicity="*" />
+    <End Role="Tags" Type="kmsModel.Tags" Multiplicity="*" />
+  </Association>
+  <Association Name="UserRoles">
+    <End Role="Roles" Type="kmsModel.Roles" Multiplicity="*" />
+    <End Role="Users" Type="kmsModel.Users" Multiplicity="*" />
+  </Association>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>

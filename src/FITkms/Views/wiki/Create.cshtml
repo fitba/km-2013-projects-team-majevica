@@ -1,0 +1,96 @@
+﻿@model FITkms.ViewModels.ArticleTagsViewModel
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/shared/_BootstrapLayout.basic.cshtml";
+}
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+<script src="~/Content/ckeditor/ckeditor.js" type="text/javascript"></script>
+
+@*<div class="alert alert-success hide">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+  Well done! You have successfully created a new article!
+</div>*@
+
+
+<h2>Write a new article</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    
+    <fieldset>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.article.Title)
+        </div>
+
+        <div class="editor-field">
+            @Html.EditorFor(model => model.article.Title, new { style = "width: 350px" })
+            @Html.ValidationMessageFor(model => model.article.Title)
+        </div>
+
+        <div class="editor-label">
+            Category
+        </div>
+
+        <div class="editor-field">
+
+            @Html.DropDownList("ArticleCategoryID", "Select article category")
+            @Html.ValidationMessageFor(model => model.article.ArticleCategoryID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.article.Content)
+        </div>
+        @* <div class="textarea">
+            @Html.TextAreaFor(model => model.Content, new { style = "width: 600px; height: 250px;" })
+
+            @Html.ValidationMessageFor(model => model.Content)
+        </div>*@
+
+        @Html.TextAreaFor(model => model.article.Content, new { @class = "ckeditor", @id = "editor1" })
+        <br />
+        @*<textarea class="ckeditor" id="editor1" placeholder="Text..." rows="10"></textarea>*@
+
+        <div class="editor-label">
+            Tags<small style="color:#808080">(separate them by commas)</small>:
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(Model => Model.tags.Name)
+            @Html.ValidationMessageFor(model => model.tags.Name)
+        </div>
+
+        
+
+
+
+
+        <div class="btn-group">
+            <button class="btn" type="submit" value="Create">Create</button>
+        </div>
+
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+
+
+@*<script type="text/javascript">
+    $(document).ready(function () {
+        $('.moj_text_editor').wysihtml5();
+    });
+</script>*@
+
+
+
+
+
+@section Scripts {
+    @System.Web.Optimization.Scripts.Render("~/bundles/jqueryval")
+}

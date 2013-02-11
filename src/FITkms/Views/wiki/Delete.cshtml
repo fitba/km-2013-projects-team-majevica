@@ -1,0 +1,20 @@
+﻿@model FITkms.Models.Articles
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/shared/_BootstrapLayout.basic.cshtml";
+}
+
+
+
+<h2>Delete confirmation</h2>
+
+<p>Are you sure you want to delete article "<strong>@Html.DisplayFor(model => model.Title)</strong>"?</p>
+
+
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" class="btn" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}
