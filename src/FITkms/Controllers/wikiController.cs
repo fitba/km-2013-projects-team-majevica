@@ -32,7 +32,7 @@ namespace FITkms.Lucene
         [ChildActionOnly]
         public ActionResult IndexPartial()
         {
-            return PartialView(db.Articles.OrderByDescending(x => x.ArticleID).ToList().Take(3));
+           return PartialView(db.Articles.OrderByDescending(x => x.ArticleID).ToList().Take(3));
 
         }
 

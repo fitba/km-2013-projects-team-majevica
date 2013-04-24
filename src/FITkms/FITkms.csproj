@@ -171,6 +171,8 @@
     <Compile Include="Controllers\ExampleLayoutsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LuceneController.cs" />
+    <Compile Include="Controllers\QuestionController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="LuceneSearch\LuceneSearch.cs" />
     <Compile Include="Controllers\wikiController.cs" />
     <Compile Include="Global.asax.cs">
@@ -546,6 +548,7 @@
     <Content Include="Views\wiki\AllTagsPartial.cshtml" />
     <Content Include="Views\wiki\articlesbytags.cshtml" />
     <Content Include="Views\Lucene\Index.cshtml" />
+    <Content Include="Views\User\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
