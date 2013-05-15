@@ -231,6 +231,7 @@
     <Compile Include="Models\Tags.cs">
       <DependentUpon>kms.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\UserModel.cs" />
     <Compile Include="Models\Users.cs">
       <DependentUpon>kms.tt</DependentUpon>
     </Compile>

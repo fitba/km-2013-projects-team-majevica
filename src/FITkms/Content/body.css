@@ -2,3 +2,22 @@
             padding-top: 60px;
             padding-bottom: 40px;
           }
+.comment
+{
+    max-width:550px;
+    border-radius:4px;
+    font-size:15px;
+    overflow:auto;
+    -webkit-box-shadow:0 0 8px #d0d0d0;
+     -moz-box-shadow:0 0 8px #d0d0d0;
+     box-shadow:0 0 8px #d0d0d0;
+     margin-bottom:5px;
+     padding:7px;
+}
+
+.likes
+{
+    background-color: #666;
+    color:white;
+    padding:2px;
+}
