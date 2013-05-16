@@ -2,11 +2,25 @@
     ViewBag.Title = "Login";
 }
 
-<h2>Login</h2>
-@using (Html.BeginForm())
-{
-    <label for="txtusername">Username</label><input id="txtusername" type="text" /> 
-    <label for="txtpassword">Password</label><input id="txtpassword" type="password" />
-    <input id="Submit1" type="submit" value="Login" />
 
+@using (Html.BeginForm("", "", FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    <div class="shadow">
+        <h2>Login</h2>
+    <div class="control-group">
+        <label for="txtusername" class="control-label">Username</label>
+        <div class="controls">
+            <input id="txtusername" type="text" />
+        </div>
+    </div>
+    <div class="control-group">
+        <label for="txtpassword" class="control-label">Password</label>
+        <div class="controls">
+            <input id="txtpassword" type="password" />
+        </div>
+    </div>
+    <div class="form-actions">
+        <input id="Submit1" type="submit" value="Login" class="btn btn-primary btn-custom" />
+    </div>
+        </div>
 }

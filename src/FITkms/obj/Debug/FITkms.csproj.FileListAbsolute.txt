@@ -131,3 +131,4 @@ C:\Users\Kukrica\Documents\GitHub\km-2013-projects-team-majevica\src\FITkms\bin\
 C:\Users\Kukrica\Documents\GitHub\km-2013-projects-team-majevica\src\FITkms\bin\System.Web.WebPages.Razor.xml
 C:\Users\Kukrica\Documents\GitHub\km-2013-projects-team-majevica\src\FITkms\obj\Debug\FITkms.dll
 C:\Users\Kukrica\Documents\GitHub\km-2013-projects-team-majevica\src\FITkms\obj\Debug\FITkms.pdb
+C:\Users\Kukrica\Documents\GitHub\km-2013-projects-team-majevica\src\FITkms\obj\Debug\FITkms.csprojResolveAssemblyReference.cache

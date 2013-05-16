@@ -21,3 +21,20 @@
     color:white;
     padding:2px;
 }
+.btn-custom
+{
+    padding:5px 15px;
+
+}
+.shadow
+{
+    border-radius:4px;
+    font-size:15px;
+    overflow:auto;
+    -webkit-box-shadow:0 0 8px #d0d0d0;
+    -moz-box-shadow:0 0 8px #d0d0d0;
+    -box-shadow:0 0 8px #d0d0d0;
+    padding:15px;
+    max-width:500px;
+    margin:0 auto;
+}
